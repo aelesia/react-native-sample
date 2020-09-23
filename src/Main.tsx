@@ -1,20 +1,6 @@
 import React from 'react'
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View
-} from 'react-native'
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions
-} from 'react-native/Libraries/NewAppScreen'
+import { SafeAreaView, ScrollView, StatusBar, Text, TouchableOpacity, View } from 'react-native'
+import { Colors, Header } from 'react-native/Libraries/NewAppScreen'
 
 import { Modal } from './app/modal/Modal'
 
