@@ -9,7 +9,7 @@
     "start": "ENV=${ENV:-local} yarn env && react-native start",
     "test": "jest",
     "test_coverage": "yarn test -- --coverage --collectCoverageFrom=**/src/utils/**",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint": "eslint . --ext .ts,.tsx",
     "lint_fix": "yarn lint --fix --plugin unused-imports --rule 'unused-imports/no-unused-imports-ts: warn'",
     "compile": "tsc --noEmit && yarn lint",
     "storybook": "ENV=storybook yarn start",
