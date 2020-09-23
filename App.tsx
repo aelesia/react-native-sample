@@ -9,10 +9,13 @@
  */
 
 import React from 'react'
+import DropdownAlert from 'react-native-dropdownalert'
 
 import { Cfg } from './src/app/configs/Cfg'
 import { Modal } from './src/app/modal/Modal'
 import { MyModal } from './src/app/modal/MyModal'
+import Toast from './src/app/toast/Toast'
+// @ts-ignore
 import StorybookUIRoot from './src/debug/storybook'
 import { Main } from './src/Main'
 
@@ -21,6 +24,8 @@ const App = () => {
     <>
       {Cfg.ENVIRONMENT !== 'storybook' ? <Main /> : <StorybookUIRoot />}
       <MyModal ref={ref => Modal.setModal(ref)} />
+
+      <DropdownAlert ref={ref => Toast.setDropDown(ref)} errorColor={'#FB5F5F'} />
     </>
   )
 }

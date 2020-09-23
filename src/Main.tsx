@@ -3,6 +3,7 @@ import { SafeAreaView, ScrollView, StatusBar, Text, TouchableOpacity, View } fro
 import { Colors, Header } from 'react-native/Libraries/NewAppScreen'
 
 import { Modal } from './app/modal/Modal'
+import Toast from './app/toast/Toast'
 
 export const Main = () => {
   return (
@@ -23,6 +24,15 @@ export const Main = () => {
           </TouchableOpacity>
           <TouchableOpacity onPress={() => Modal.fullPage(<ModalContainer />)}>
             <Text>Fullscreen</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Toast.info('Info', 'content')}>
+            <Text>Toast Info</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Toast.error('Error', new Error())}>
+            <Text>Toast Error</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Toast.warn('Warning', 'Something went wrong')}>
+            <Text>Toast Warning</Text>
           </TouchableOpacity>
         </ScrollView>
       </SafeAreaView>
