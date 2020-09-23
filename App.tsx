@@ -10,8 +10,8 @@
 
 import React from 'react'
 
-import StorybookUIRoot from './debug/storybook'
 import { Cfg } from './src/app/configs/Cfg'
+import StorybookUIRoot from './src/debug/storybook'
 import { Main } from './src/Main'
 
 const App = () => {
