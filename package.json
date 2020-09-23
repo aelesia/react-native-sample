@@ -7,7 +7,10 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "test_coverage": "yarn test -- --coverage --collectCoverageFrom=**/src/utils/**",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint_fix": "yarn lint --fix --plugin unused-imports --rule 'unused-imports/no-unused-imports-ts: warn'",
+    "compile": "tsc --noEmit && yarn lint"
   },
   "dependencies": {
     "react": "16.13.1",
@@ -24,10 +27,12 @@
     "@typescript-eslint/parser": "^2.27.0",
     "babel-jest": "^25.1.0",
     "eslint": "^6.5.1",
+    "eslint-plugin-simple-import-sort": "^5.0.2",
+    "eslint-plugin-unused-imports": "^0.1.3",
     "jest": "^25.1.0",
     "metro-react-native-babel-preset": "^0.59.0",
     "react-test-renderer": "16.13.1",
-    "typescript": "^3.8.3"
+    "typescript": "3.9.7"
   },
   "jest": {
     "preset": "react-native",
