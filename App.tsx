@@ -15,6 +15,7 @@ import { Cfg } from './src/app/configs/Cfg'
 import { Modal } from './src/app/modal/Modal'
 import { MyModal } from './src/app/modal/MyModal'
 import Toast from './src/app/toast/Toast'
+// @ts-ignore
 import StorybookUIRoot from './src/debug/storybook'
 import { Main } from './src/Main'
 
