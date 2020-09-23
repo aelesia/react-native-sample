@@ -2,8 +2,8 @@ import React from 'react'
 import { SafeAreaView, ScrollView, StatusBar, Text, TouchableOpacity, View } from 'react-native'
 import { Colors, Header } from 'react-native/Libraries/NewAppScreen'
 
-import { Modal } from './app/modal/Modal'
-import Toast from './app/toast/Toast'
+import { Modal } from '../lib/modal/Modal'
+import Toast from '../lib/toast/Toast'
 
 export const Main = () => {
   return (

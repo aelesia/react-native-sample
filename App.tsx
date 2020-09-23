@@ -11,10 +11,10 @@
 import React from 'react'
 import DropdownAlert from 'react-native-dropdownalert'
 
+import { Modal } from './lib/modal/Modal'
+import { MyModal } from './lib/modal/MyModal'
+import Toast from './lib/toast/Toast'
 import { Cfg } from './src/app/configs/Cfg'
-import { Modal } from './src/app/modal/Modal'
-import { MyModal } from './src/app/modal/MyModal'
-import Toast from './src/app/toast/Toast'
 // @ts-ignore
 import StorybookUIRoot from './src/debug/storybook'
 import { Main } from './src/Main'
