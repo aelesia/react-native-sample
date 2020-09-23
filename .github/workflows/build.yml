@@ -1,0 +1,50 @@
+name: Build
+on:
+  push:
+    branches:
+      - 'master'
+      - 'develop'
+      - 'feature/**'
+      - 'release/**'
+      - 'hotfix/**'
+      - 'ci/**'
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: Cache node_modules
+        id: cache_node_modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+      - if: steps.cache_node_modules.outputs.cache-hit != 'true'
+        run: yarn install
+
+      - run: yarn run compile
+
+  test_coverage:
+    needs: compile
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+
+      - name: Cache node_modules
+        id: cache_node_modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+      - if: steps.cache_node_modules.outputs.cache-hit != 'true'
+        run: yarn install
+
+      - run: yarn run test_coverage
