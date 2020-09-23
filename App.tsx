@@ -18,6 +18,8 @@ import {
   ReloadInstructions
 } from 'react-native/Libraries/NewAppScreen'
 
+import { Cfg } from './src/app/configs/Cfg'
+
 declare const global: { HermesInternal: null | {} }
 
 const App = () => {
@@ -53,10 +55,12 @@ const App = () => {
               </Text>
             </View>
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
+              <Text style={styles.sectionTitle}>ENVIRONMENT</Text>
+              <Text style={styles.sectionDescription}>{Cfg.ENVIRONMENT}</Text>
+            </View>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>DEBUG</Text>
+              <Text style={styles.sectionDescription}>{JSON.stringify(Cfg.DEBUG)}</Text>
             </View>
             <LearnMoreLinks />
           </View>
