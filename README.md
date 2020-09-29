@@ -13,3 +13,10 @@ Default: `yarn start` (will run LOCAL)
 Local: `ENV=local yarn start`
 
 Storybook: `ENV=storybook yarn start`
+
+# Notes
+
+The following items were omitted:
+
+- App icon
+- Splash screen
