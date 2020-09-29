@@ -12,11 +12,13 @@ export const PictureCard = (p: { post: Post; style?: ViewStyle }) => {
     <Card style={p.style}>
       <UserThumbnail style={{ marginBottom: sp.xs }} user={p.post.user} />
       <Image
-        source={{ width: WIDTH, height: 300, uri: p.post.photo.url }}
+        source={{ width: WIDTH, height: WIDTH / p.post.photo.aspectRatio, uri: p.post.photo.url }}
         style={{ marginHorizontal: -sp.sm }}
       />
-      <Text style={{ marginVertical: sp.sm, fontSize: sz.md }}>{p.post.description}</Text>
-      <Row style={{ alignItems: 'center' }}>
+      {p.post.description && (
+        <Text style={{ marginTop: sp.sm, fontSize: sz.md }}>{p.post.description}</Text>
+      )}
+      <Row style={{ alignItems: 'center', marginTop: sp.sm }}>
         <SvgHeart />
         <Text style={{ marginLeft: sp.xs }}>{p.post.likes}</Text>
       </Row>
