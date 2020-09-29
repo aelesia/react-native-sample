@@ -7,6 +7,7 @@ import { fakerFace, fakerImage, random } from '../faker/Faker'
 export const PostFactory = new FakerFactory(
   (): Post => {
     return {
+      id: Faker.random.uuid(),
       likes: Rand.num(0, 100),
       photo: {
         url: fakerImage({

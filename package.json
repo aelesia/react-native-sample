@@ -13,7 +13,9 @@
     "lint_fix": "yarn lint --fix --plugin unused-imports --rule 'unused-imports/no-unused-imports-ts: warn'",
     "compile": "tsc --noEmit && yarn lint",
     "storybook": "ENV=storybook yarn start",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "setup": "yarn install && yarn _setup_pods",
+    "_setup_pods": "cd ios && pod install && cd .."
   },
   "dependencies": {
     "@aelesia/commons": "^0.5.0-next.40",

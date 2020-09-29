@@ -9,7 +9,7 @@ export const PictureWall = (p: { posts: Post[] }) => {
   return (
     <ScrollView>
       {p.posts.map(post => (
-        <PictureCard style={{ marginVertical: sp.xs }} post={post} />
+        <PictureCard key={post.id} style={{ marginVertical: sp.xs }} post={post} />
       ))}
     </ScrollView>
   )
