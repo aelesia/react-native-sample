@@ -2,6 +2,7 @@ import React from 'react'
 import { Image, Text, ViewStyle } from 'react-native'
 
 import { WIDTH } from '../../../app/consts/Consts'
+import { SvgHeart } from '../../../assets/svg/SvgHeart'
 import { Card, CircleImage, Row } from '../../../components/general/General'
 import { Post, User } from '../../../models/Models'
 import { sp, sz } from '../../../style/Style'
@@ -15,8 +16,9 @@ export const PictureCard = (p: { post: Post; style?: ViewStyle }) => {
         style={{ marginHorizontal: -sp.sm }}
       />
       <Text style={{ marginVertical: sp.sm, fontSize: sz.md }}>{p.post.description}</Text>
-      <Row>
-        <Text>Likes: {p.post.likes}</Text>
+      <Row style={{ alignItems: 'center' }}>
+        <SvgHeart />
+        <Text style={{ marginLeft: sp.xs }}>{p.post.likes}</Text>
       </Row>
     </Card>
   )
