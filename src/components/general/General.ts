@@ -1,4 +1,4 @@
-import { View } from 'react-native'
+import { Image, View } from 'react-native'
 import { withStyle } from 'reactjs-commons'
 
 import { Css } from '../../style/Css'
@@ -14,3 +14,9 @@ export const Card = withStyle(View)({
   padding: sp.sm,
   backgroundColor: cl.white
 })
+
+export const CircleImage = withStyle(Image)<{ size: number }>(p => ({
+  width: p.size,
+  height: p.size,
+  borderRadius: p.size
+}))

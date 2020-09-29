@@ -1,7 +1,10 @@
-type Photo = {
+export type Photo = {
   url: string
 }
-type User = {}
+export type User = {
+  username: string
+  profile_image: Photo
+}
 
 export type Post = {
   photo: Photo

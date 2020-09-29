@@ -1,8 +1,8 @@
 import { FakerFactory, Rand } from '@aelesia/commons'
 import Faker from 'faker'
 
-import { Post } from '../../models/Models'
-import { fakerImage, random } from '../faker/Faker'
+import { Post, User } from '../../models/Models'
+import { fakerFace, fakerImage, random } from '../faker/Faker'
 
 export const PostFactory = new FakerFactory(
   (): Post => {
@@ -14,8 +14,19 @@ export const PostFactory = new FakerFactory(
           height: 400
         })
       },
-      user: {},
+      user: UserFactory.new(),
       description: Faker.lorem.sentences(random(1, 3))
+    }
+  }
+)
+
+export const UserFactory = new FakerFactory(
+  (): User => {
+    return {
+      username: Faker.internet.userName(),
+      profile_image: {
+        url: fakerFace()
+      }
     }
   }
 )
