@@ -1,11 +1,11 @@
 import { FakerFactory, Rand } from '@aelesia/commons'
 import Faker from 'faker'
 
-import { Post, User } from '../../models/Models'
+import { TPostIndex, TUser } from '../../models/Models'
 import { fakerFace, fakerImage, random, randomArray } from '../faker/Faker'
 
 export const PostFactory = new FakerFactory(
-  (): Post => {
+  (): TPostIndex => {
     const width = randomArray([300, 400]) as 300 | 400
     const height = randomArray([300, 400]) as 300 | 400
     return {
@@ -27,7 +27,7 @@ export const PostFactory = new FakerFactory(
 )
 
 export const UserFactory = new FakerFactory(
-  (): User => {
+  (): TUser => {
     return {
       username: Faker.internet.userName(),
       profile_image: fakerFace()

@@ -4,10 +4,10 @@ import { Image, Text, ViewStyle } from 'react-native'
 import { WIDTH } from '../../../app/consts/Consts'
 import { SvgHeart } from '../../../assets/svg/SvgHeart'
 import { Card, CircleImage, Row } from '../../../components/general/General'
-import { Post, User } from '../../../models/Models'
+import { TPostIndex, TUser } from '../../../models/Models'
 import { sp, sz } from '../../../style/Style'
 
-export const PictureCard = (p: { post: Post; style?: ViewStyle }) => {
+export const PictureCard = (p: { post: TPostIndex; style?: ViewStyle }) => {
   return (
     <Card style={p.style}>
       <UserThumbnail style={{ marginBottom: sp.xs }} user={p.post.user} />
@@ -26,10 +26,10 @@ export const PictureCard = (p: { post: Post; style?: ViewStyle }) => {
   )
 }
 
-export const UserThumbnail = (p: { user: User; style?: ViewStyle }) => {
+export const UserThumbnail = (p: { user: TUser; style?: ViewStyle }) => {
   return (
     <Row style={{ ...p.style, alignItems: 'center' }}>
-      <CircleImage size={36} source={{ uri: p.user.profile_image.url }} />
+      <CircleImage size={36} source={{ uri: p.user.profile_image }} />
       <Text style={{ marginLeft: sp.xs }}>{p.user.username}</Text>
     </Row>
   )

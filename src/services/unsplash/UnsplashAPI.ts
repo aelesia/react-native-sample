@@ -1,5 +1,6 @@
 import Toast from '../../../lib/toast/Toast'
-import { Post } from '../../models/Models'
+import { TPost, TPostIndex } from '../../models/Models'
+import { _photo, PhotoReq } from './api/_photo'
 import { _searchPhotos, SearchPhotosReq } from './api/_searchPhotos'
 
 type Req<T> = Omit<T, 'client_id'>
@@ -23,7 +24,7 @@ export class UnsplashAPI {
   }
 
   searchPhotos = tryToastError(
-    async (req: Req<SearchPhotosReq>): Promise<Post[]> => {
+    async (req: Req<SearchPhotosReq>): Promise<TPostIndex[]> => {
       const result = await _searchPhotos({ ...req, client_id: this.client_id })
       return result.results.map(it => ({
         id: it.id,
@@ -40,6 +41,31 @@ export class UnsplashAPI {
           url: it.urls.regular
         }
       }))
+    }
+  )
+
+  photo = tryToastError(
+    async (req: Req<PhotoReq>): Promise<TPost> => {
+      const it = await _photo({ ...req, client_id: this.client_id })
+      return {
+        id: it.id,
+        description: it.description ?? undefined,
+        user: {
+          username: it.user.username,
+          profile_image: it.user.profile_image.small
+        },
+        photo: {
+          height: it.height,
+          width: it.width,
+          aspectRatio: it.width / it.height,
+          url: it.urls.regular
+        },
+        likes: it.likes,
+        views: it.views,
+        downloads: it.downloads,
+        createdAt: it.created_at,
+        exif: it.exif
+      }
     }
   )
 }
