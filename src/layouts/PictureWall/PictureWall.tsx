@@ -34,7 +34,7 @@ export const PictureWall = (p: { posts: TPostIndex[] }) => {
         style={{ overflow: 'visible' }}
         scrollBottomThreshold={1000}
         onScrollBottom={() => PictureWallState.fetchMorePhotos()}
-        refreshControl={<AsyncRefreshControl onRefresh={PictureWallState.refresh} />}>
+        refreshControl={<AsyncRefreshControl onRefresh={() => PictureWallState.refresh()} />}>
         {p.posts.map((post, index) => (
           <TouchableOpacity
             key={index}

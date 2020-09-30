@@ -1,7 +1,7 @@
 import { FakerFactory, Rand } from '@aelesia/commons'
 import Faker from 'faker'
 
-import { TPostIndex, TUser } from '../../models/Models'
+import { TPost, TPostIndex, TUser } from '../../models/Models'
 import { fakerFace, fakerImage, random, randomArray } from '../faker/Faker'
 
 export const PostFactory = new FakerFactory(
@@ -31,6 +31,27 @@ export const UserFactory = new FakerFactory(
     return {
       username: Faker.internet.userName(),
       profile_image: fakerFace()
+    }
+  }
+)
+
+export const PostDetailsFactory = new FakerFactory(
+  (): TPost => {
+    return {
+      ...PostFactory.new(),
+      createdAt: Faker.date.recent(),
+      description: Faker.lorem.sentence(),
+      downloads: Faker.random.number(100000),
+      exif: {
+        aperture: '5.6',
+        exposure_time: '1/250',
+        focal_length: '35.0',
+        iso: 125,
+        make: 'Sony',
+        model: 'ILCE-7M2'
+      },
+      location: Faker.address.country(),
+      views: Faker.random.number(1000000)
     }
   }
 )
