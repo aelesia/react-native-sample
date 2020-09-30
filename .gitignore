@@ -65,4 +65,4 @@ buck-out/
 env.json
 dist
 env/local/local.env.json
-lib/linkedstate/LinkedState.ts
+lib/linkedstate/LinkedState2.ts
