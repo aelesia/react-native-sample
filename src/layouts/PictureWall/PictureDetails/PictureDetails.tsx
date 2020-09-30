@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Text, TextStyle, View, ViewStyle } from 'react-native'
 import { withStyle } from 'reactjs-commons'
 
-import { useLinkedState } from '../../../../lib/linkedstate/LinkedState2'
+import { useLinkedState } from '../../../../lib/linkedstate/LinkedState'
 import { SvgDownload } from '../../../assets/svg/SvgDownload'
 import { SvgLocation } from '../../../assets/svg/SvgLocation'
 import { SvgView } from '../../../assets/svg/SvgView'

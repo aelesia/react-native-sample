@@ -2,7 +2,7 @@ import { sleep } from '@aelesia/commons'
 import React, { useEffect } from 'react'
 import { TouchableOpacity } from 'react-native'
 
-import { useLinkedState } from '../../../lib/linkedstate/LinkedState2'
+import { useLinkedState } from '../../../lib/linkedstate/LinkedState'
 import { Modal } from '../../../lib/modal/Modal'
 import { AsyncRefreshControl } from '../../components/general/AsyncRefreshControl'
 import { IfNotch } from '../../components/general/IfNoNotch'
