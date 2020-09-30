@@ -13,6 +13,6 @@ module.exports = {
     "@typescript-eslint/no-unused-vars":["warn", { "argsIgnorePattern": "^_" }],
     "simple-import-sort/sort": "warn",
     "dot-notation": "off",
-    "no-shadow": "error"
+    "no-shadow": "error",
   }
 };

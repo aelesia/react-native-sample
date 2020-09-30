@@ -9,18 +9,26 @@
     "start": "ENV=${ENV:-local} yarn env && react-native start",
     "test": "jest",
     "test_coverage": "yarn test -- --coverage --collectCoverageFrom=**/src/utils/**",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint": "eslint . --ext .ts,.tsx",
     "lint_fix": "yarn lint --fix --plugin unused-imports --rule 'unused-imports/no-unused-imports-ts: warn'",
     "compile": "tsc --noEmit && yarn lint",
     "storybook": "ENV=storybook yarn start",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "setup": "yarn install && yarn _setup_pods",
+    "_setup_pods": "cd ios && pod install && cd .."
   },
   "dependencies": {
+    "@aelesia/commons": "^0.5.0-next.40",
+    "@types/faker": "^5.1.2",
+    "faker": "^5.1.0",
+    "httyp": "^0.2.0",
     "react": "16.13.1",
-    "react-native": "0.63.2",
+    "react-native": "0.63.3",
+    "react-native-device-info": "^6.0.4",
     "react-native-dropdownalert": "^4.3.0",
     "react-native-modal": "^11.5.6",
-    "reactjs-commons": "^1.2.0"
+    "react-native-svg": "^12.1.0",
+    "reactjs-commons": "^1.2.1-next.28"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
@@ -33,7 +41,7 @@
     "@storybook/react-native": "^5.3.21",
     "@storybook/react-native-server": "^5.3.21",
     "@types/jest": "^25.2.3",
-    "@types/react-native": "^0.63.2",
+    "@types/react-native": "0.62.18",
     "@types/react-test-renderer": "^16.9.2",
     "@typescript-eslint/eslint-plugin": "^2.27.0",
     "@typescript-eslint/parser": "^2.27.0",

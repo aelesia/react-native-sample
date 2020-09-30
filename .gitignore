@@ -64,3 +64,5 @@ buck-out/
 /coverage/
 env.json
 dist
+env/local/local.env.json
+lib/linkedstate/LinkedState2.ts
