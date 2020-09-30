@@ -3,7 +3,7 @@ import { ActivityIndicator, TouchableOpacity, ViewStyle } from 'react-native'
 import { SvgProps } from 'react-native-svg'
 import { withLoading } from 'reactjs-commons'
 
-import { sz } from '../../style/Style'
+import { cl, sz } from '../../style/Style'
 
 type P = {
   svg: React.FC<SvgProps>
@@ -26,7 +26,7 @@ const _IconButton: React.FC<P> = p => {
       disabled={p.disabled}
       onPress={p.onPress}>
       {p.loading ? (
-        <ActivityIndicator size={p.size ? p.size * 1.7 : sz.sm * 1.7} />
+        <ActivityIndicator size={p.size ? p.size * 1.7 : sz.sm * 1.7} color={cl.grey2} />
       ) : (
         <p.svg fill={p.fill} />
       )}

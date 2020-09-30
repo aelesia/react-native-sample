@@ -1,3 +1,4 @@
+import { sleep } from '@aelesia/commons'
 import React, { useEffect } from 'react'
 import { TouchableOpacity } from 'react-native'
 
@@ -25,7 +26,12 @@ export const PictureWall = (p: { posts: TPostIndex[] }) => {
   return (
     <>
       <IfNotch style={{ height: sp.lg }} />
-      <SearchBar onSearch={text => PictureWallState.searchPhotos(text)} />
+      <SearchBar
+        onSearch={async text => {
+          await sleep(2000)
+          await PictureWallState.searchPhotos(text)
+        }}
+      />
       <MyScrollView
         style={{ overflow: 'visible' }}
         scrollBottomThreshold={1000}
