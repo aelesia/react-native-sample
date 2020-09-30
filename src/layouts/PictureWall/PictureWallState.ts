@@ -1,11 +1,11 @@
 import { Rand } from '@aelesia/commons'
 
-import { LinkedState } from '../../../lib/linkedstate/LinkedState'
+import { LinkedState, MultiLinkedState } from '../../../lib/linkedstate/LinkedState'
 import { Unsplash } from '../../app/dependencies/Spring'
 import { TPost, TPostIndex } from '../../models/Models'
 
 export const Posts = new LinkedState<TPostIndex[]>([])
-export const Post = new LinkedState<TPost | undefined>(undefined)
+export const Post = MultiLinkedState
 
 export const PictureWallState = new (class {
   page: number = 1
@@ -30,6 +30,6 @@ export const PictureWallState = new (class {
 
   async fetchPost(id: string) {
     const post = await Unsplash.photo({ id })
-    Post.set(post)
+    Post(id).set(post)
   }
 })()

@@ -1,3 +1,4 @@
+import { sleep } from '@aelesia/commons'
 import React, { useEffect } from 'react'
 import { Text, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native'
 
@@ -23,12 +24,19 @@ export const PictureWallPage = () => {
 export const PictureWall = (p: { posts: TPostIndex[] }) => {
   return (
     <>
-      {/* FIXME: Should use FlatList */}
+      <IfNotch style={{ height: sp.lg }} />
       <MyScrollView
+        style={{ overflow: 'visible' }}
         scrollBottomThreshold={1000}
         onScrollBottom={() => PictureWallState.fetchMorePhotos()}
-        refreshControl={<AsyncRefreshControl onRefresh={() => PictureWallState.refresh()} />}>
-        <IfNotch style={{ height: sp.xl }} />
+        refreshControl={
+          <AsyncRefreshControl
+            onRefresh={async () => {
+              await sleep(2000) // HACK: This is simply to display the loading animation
+              await PictureWallState.refresh()
+            }}
+          />
+        }>
         {p.posts.map((post, index) => (
           <TouchableOpacity
             key={index}
@@ -37,7 +45,6 @@ export const PictureWall = (p: { posts: TPostIndex[] }) => {
           </TouchableOpacity>
         ))}
       </MyScrollView>
-      <Text style={{ position: 'absolute', top: sp.md, left: sp.md }}>{p.posts.length}</Text>
     </>
   )
 }

@@ -24,3 +24,4 @@ The following items were omitted:
 
 - App icon
 - Splash screen
+- Usage of FlatList over ScrollView in `PictureWall.tsx`

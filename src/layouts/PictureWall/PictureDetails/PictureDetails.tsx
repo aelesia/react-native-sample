@@ -88,7 +88,7 @@ export const PictureDetails = (p: { post: TPostIndex & Partial<TPost> }) => {
 }
 
 export const PictureDetailsPage = (p: { postID: string; post: TPostIndex }) => {
-  const [post] = useLinkedState<TPost | undefined>(Post)
+  const [post] = useLinkedState<TPost | undefined>(Post(p.postID))
   useEffect(() => {
     PictureWallState.fetchPost(p.postID)
   }, [p.postID])
