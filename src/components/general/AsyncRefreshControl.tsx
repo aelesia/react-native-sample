@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import { RefreshControl } from 'react-native'
 
-import { sp } from '../../style/Style'
-
 export const AsyncRefreshControl: React.FC<{ onRefresh: () => Promise<void> }> = p => {
   const [loading, setLoading] = useState<boolean>(false)
 

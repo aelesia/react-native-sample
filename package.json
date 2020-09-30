@@ -23,7 +23,7 @@
     "faker": "^5.1.0",
     "httyp": "^0.2.0",
     "react": "16.13.1",
-    "react-native": "0.63.2",
+    "react-native": "0.63.3",
     "react-native-device-info": "^6.0.4",
     "react-native-dropdownalert": "^4.3.0",
     "react-native-modal": "^11.5.6",
