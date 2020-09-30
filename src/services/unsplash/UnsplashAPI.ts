@@ -60,6 +60,7 @@ export class UnsplashAPI {
           aspectRatio: it.width / it.height,
           url: it.urls.regular
         },
+        location: it.location?.title,
         likes: it.likes,
         views: it.views,
         downloads: it.downloads,

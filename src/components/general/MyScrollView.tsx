@@ -1,5 +1,5 @@
 import React, { forwardRef, useState } from 'react'
-import { NativeScrollEvent, NativeSyntheticEvent, ScrollView, ScrollViewProps } from 'react-native'
+import { NativeScrollEvent, NativeSyntheticEvent, ScrollView } from 'react-native'
 
 type P = {
   scrollBottomThreshold?: number

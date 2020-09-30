@@ -59,10 +59,10 @@ export interface CommentPaginatedListLinks {
 }
 
 export interface Location {
-  title: null
-  name: null
-  city: null
-  country: null
+  title: string
+  name: string
+  city: string
+  country: string
   position: Position
 }
 

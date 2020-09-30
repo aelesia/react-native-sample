@@ -1,6 +1,5 @@
-import React from 'react'
 import { Image, View } from 'react-native'
-import { withProps, withStyle } from 'reactjs-commons'
+import { withStyle } from 'reactjs-commons'
 
 import { Css } from '../../style/Css'
 import { cl, sp } from '../../style/Style'

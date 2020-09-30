@@ -1,5 +1,3 @@
-import { Str } from '@aelesia/commons'
-
 export function testUtils(): string {
   return 'test'
 }

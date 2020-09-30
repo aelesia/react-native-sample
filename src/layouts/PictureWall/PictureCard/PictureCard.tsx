@@ -1,11 +1,12 @@
 import React from 'react'
-import { Image, Text, View, ViewStyle } from 'react-native'
+import { Image, Text, ViewStyle } from 'react-native'
 
 import { WIDTH } from '../../../app/consts/Consts'
 import { SvgHeart } from '../../../assets/svg/SvgHeart'
-import { Card, CircleImage, Row } from '../../../components/general/General'
-import { TPostIndex, TUser } from '../../../models/Models'
+import { Card, Row } from '../../../components/general/General'
+import { TPostIndex } from '../../../models/Models'
 import { sp, sz } from '../../../style/Style'
+import { UserThumbnail } from './UserThumbnail/UserThumbnail'
 
 export const PictureCard = (p: { post: TPostIndex; style?: ViewStyle }) => {
   return (
@@ -16,21 +17,12 @@ export const PictureCard = (p: { post: TPostIndex; style?: ViewStyle }) => {
         style={{ marginHorizontal: -sp.sm }}
       />
       {p.post.description && (
-        <Text style={{ marginTop: sp.sm, fontSize: sz.md }}>{p.post.description}</Text>
+        <Text style={{ marginTop: sp.md, fontSize: sz.md }}>{p.post.description}</Text>
       )}
-      <Row style={{ alignItems: 'center', marginTop: sp.sm }}>
+      <Row style={{ alignItems: 'center', marginTop: sp.md }}>
         <SvgHeart />
         <Text style={{ marginLeft: sp.xs }}>{p.post.likes}</Text>
       </Row>
     </Card>
-  )
-}
-
-export const UserThumbnail = (p: { user: TUser; style?: ViewStyle }) => {
-  return (
-    <Row style={{ ...p.style, alignItems: 'center' }}>
-      <CircleImage size={36} source={{ uri: p.user.profile_image }} />
-      <Text style={{ marginLeft: sp.xs }}>{p.user.username}</Text>
-    </Row>
   )
 }
