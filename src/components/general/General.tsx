@@ -5,8 +5,18 @@ import { withProps, withStyle } from 'reactjs-commons'
 import { Css } from '../../style/Css'
 import { cl, sp } from '../../style/Style'
 
+export const __ = View
+
 export const Row = withStyle(View)({
-  flexDirection: 'row'
+  flexDirection: 'row',
+  alignItems: 'center'
+})
+
+export const Divider = withStyle(View)({
+  marginVertical: sp.sm,
+  height: 1,
+  width: '100%',
+  backgroundColor: cl.grey3
 })
 
 export const Card = withStyle(View)({
@@ -21,8 +31,3 @@ export const CircleImage = withStyle(Image)<{ size: number }>(p => ({
   height: p.size,
   borderRadius: p.size
 }))
-
-export const ViewIf = withProps(View)<{ if:() => boolean }>(p => {
-  // @ts-ignore
-  return { children: p.if() ? p.children : <></> } as any
-})

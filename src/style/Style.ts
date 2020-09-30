@@ -31,7 +31,8 @@ export const sp = {
   sm: 16,
   md: 24,
   lg: 32,
-  xl: 48
+  xl: 48,
+  xxl: 72
 }
 
 export const cl = {
@@ -39,8 +40,16 @@ export const cl = {
   // black: '#000',
   // grey0: '#111',
   black: '#333',
-  // grey2: '#666',
-  // grey3: '#999',
-  // grey4: '#CCC',
+  grey: '#666',
+  grey2: '#999',
+  grey3: '#CCC',
   white: '#FFF'
+}
+
+export const thm = {
+  pri: '#333',
+  sec: '#666',
+  priBg: '#F0F0F0',
+  secBg: '#',
+  inactive: '#999'
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, Text, ViewStyle } from 'react-native'
+import { Image, Text, View, ViewStyle } from 'react-native'
 
 import { WIDTH } from '../../../app/consts/Consts'
 import { SvgHeart } from '../../../assets/svg/SvgHeart'
