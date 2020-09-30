@@ -1,10 +1,10 @@
 import React, { useRef, useState } from 'react'
-import { ActivityIndicator, Platform, TextInput, View } from 'react-native'
+import { Platform, TextInput, View } from 'react-native'
 
 import { SvgSearch } from '../../../assets/svg/SvgSearch'
 import { Row } from '../../../components/general/General'
 import { IconButton } from '../../../components/general/IconButton'
-import { cl, sp, sz } from '../../../style/Style'
+import { cl, sp } from '../../../style/Style'
 
 export const SearchBar = (p: { onSearch: (searchText: string) => any }) => {
   const [text, setText] = useState<string>('')

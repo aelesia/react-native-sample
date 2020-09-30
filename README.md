@@ -25,3 +25,4 @@ The following items were omitted:
 - App icon
 - Splash screen
 - Usage of FlatList over ScrollView in `PictureWall.tsx`
+- No test coverage for Jest or Detox. However there is Storybook which replaces the role of tests.
