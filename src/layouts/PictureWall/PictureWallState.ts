@@ -31,7 +31,7 @@ export const PictureWallState = new (class {
 
   async searchPhotos(query: string) {
     this.page = 1
-    this.query = query
+    this.query = query.length > 0 ? query : 'nature'
     const photos = await Unsplash.searchPhotos({
       page: this.page,
       query: this.query

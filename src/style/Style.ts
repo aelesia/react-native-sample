@@ -8,12 +8,12 @@ export const sz = {
 }
 
 export const wt = {
-  _100: 100,
-  _200: 200,
-  _300: 300,
-  _400: 400,
-  _500: 500,
-  _700: 700
+  _100: '100' as '100',
+  _200: '200' as '200',
+  _300: '300' as '300',
+  _400: '400' as '400',
+  _500: '500' as '500',
+  _700: '700' as '700'
 }
 
 export const sq = {
@@ -37,8 +37,6 @@ export const sp = {
 
 export const cl = {
   background: '#F0F0F0',
-  // black: '#000',
-  // grey0: '#111',
   black: '#333',
   grey: '#666',
   grey2: '#999',

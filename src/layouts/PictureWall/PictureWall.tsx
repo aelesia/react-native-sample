@@ -15,11 +15,12 @@ import { cl, sp } from '../../style/Style'
 import { PictureCard } from './PictureCard/PictureCard'
 import { PictureDetailsPage } from './PictureDetails/PictureDetails'
 import { PictureWallState, Posts } from './PictureWallState'
+import { SearchBar } from './SearchBar/SearchBar'
 
 export const PictureWallPage = () => {
   const [posts] = useLinkedState(Posts)
   useEffect(() => {
-    PictureWallState.refresh()
+    PictureWallState.searchPhotos('nature')
   }, [])
   return <PictureWall posts={posts} />
 }
@@ -28,19 +29,12 @@ export const PictureWall = (p: { posts: TPostIndex[] }) => {
   return (
     <>
       <IfNotch style={{ height: sp.lg }} />
-      <SearchBar onSearch={searchText => PictureWallState.searchPhotos(searchText)} />
+      <SearchBar onSearch={text => PictureWallState.searchPhotos(text)} />
       <MyScrollView
         style={{ overflow: 'visible' }}
         scrollBottomThreshold={1000}
         onScrollBottom={() => PictureWallState.fetchMorePhotos()}
-        refreshControl={
-          <AsyncRefreshControl
-            onRefresh={async () => {
-              await sleep(2000) // HACK: This is simply to display the loading animation
-              await PictureWallState.refresh()
-            }}
-          />
-        }>
+        refreshControl={<AsyncRefreshControl onRefresh={PictureWallState.refresh} />}>
         {p.posts.map((post, index) => (
           <TouchableOpacity
             key={index}
@@ -50,48 +44,5 @@ export const PictureWall = (p: { posts: TPostIndex[] }) => {
         ))}
       </MyScrollView>
     </>
-  )
-}
-
-export const SearchBar = (p: { onSearch: (searchText: string) => any }) => {
-  const [text, setText] = useState<string>('')
-  const textInput = useRef<TextInput>(null)
-  return (
-    <Row
-      style={{
-        marginHorizontal: sp.sm,
-        marginVertical: sp.xs
-      }}>
-      <View
-        style={{
-          flexGrow: 1,
-          backgroundColor: '#EEE',
-          marginRight: sp.sm,
-          paddingVertical: sp.xs,
-          paddingHorizontal: sp.sm,
-          borderRadius: 10
-        }}>
-        <TextInput
-          autoCapitalize={'none'}
-          autoCorrect={false}
-          ref={textInput}
-          clearTextOnFocus={true}
-          placeholder={'Search'}
-          placeholderTextColor={cl.grey2}
-          value={text}
-          onChangeText={t => {
-            setText(t)
-          }}
-        />
-      </View>
-      <IconButton
-        svg={SvgSearch}
-        fill={cl.grey2}
-        onPress={async () => {
-          await p.onSearch(text)
-          textInput.current?.blur()
-        }}
-      />
-    </Row>
   )
 }

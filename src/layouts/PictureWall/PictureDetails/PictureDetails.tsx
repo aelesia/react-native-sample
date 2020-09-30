@@ -8,33 +8,17 @@ import { SvgLocation } from '../../../assets/svg/SvgLocation'
 import { SvgView } from '../../../assets/svg/SvgView'
 import { __, Divider, Row } from '../../../components/general/General'
 import { TPost, TPostIndex } from '../../../models/Models'
-import { cl, sp, sz, thm } from '../../../style/Style'
+import { cl, sp, sz, thm, wt } from '../../../style/Style'
 import { formatNumber } from '../../../utils/Utils'
 import { PictureWallState, Post } from '../PictureWallState'
 
-export const Label = (p: {
-  title: string
-  value?: string | number
-  style?: ViewStyle
-  titleStyle?: TextStyle
-  labelStyle?: TextStyle
-}) => {
-  return (
-    <View style={p.style}>
-      <Text style={{ fontSize: sz.sm, color: thm.sec, ...p.titleStyle }}>{p.title}</Text>
-      <Text
-        style={{ fontSize: sz.md, marginTop: sp.xs, textTransform: 'uppercase', ...p.labelStyle }}>
-        {p.value ?? '--'}
-      </Text>
-    </View>
-  )
+export const PictureDetailsPage = (p: { postID: string; post: TPostIndex }) => {
+  const [post] = useLinkedState<TPost | undefined>(Post(p.postID))
+  useEffect(() => {
+    PictureWallState.fetchPost(p.postID)
+  }, [p.postID])
+  return <PictureDetails post={{ ...post, ...p.post }} />
 }
-
-const StyledLabel = withStyle(Label)({
-  marginBottom: sp.lg,
-  flex: 1,
-  flexGrow: 1
-})
 
 export const PictureDetails = (p: { post: TPostIndex & Partial<TPost> }) => {
   const { downloads, views, exif } = p.post
@@ -45,7 +29,9 @@ export const PictureDetails = (p: { post: TPostIndex & Partial<TPost> }) => {
         <__>
           <Row>
             <SvgLocation />
-            <Text style={{ marginLeft: sp.xs, fontSize: sz.md }}>{p.post.location}</Text>
+            <Text style={{ marginLeft: sp.xs, fontSize: sz.sm, fontWeight: wt._300 }}>
+              {p.post.location}
+            </Text>
           </Row>
           <Divider />
         </__>
@@ -56,7 +42,7 @@ export const PictureDetails = (p: { post: TPostIndex & Partial<TPost> }) => {
             <SvgView />
             <Text style={{ marginLeft: sp.xs }}>Views</Text>
           </Row>
-          <Text style={{ fontSize: sz.lg, marginTop: sp.sm }}>
+          <Text style={{ fontSize: sz.lg, marginTop: sp.sm, fontWeight: '200' }}>
             {views ? formatNumber(views) : '--'}
           </Text>
         </__>
@@ -65,13 +51,13 @@ export const PictureDetails = (p: { post: TPostIndex & Partial<TPost> }) => {
             <SvgDownload />
             <Text style={{ marginLeft: sp.xs }}>Downloads</Text>
           </Row>
-          <Text style={{ fontSize: sz.lg, marginTop: sp.sm }}>
+          <Text style={{ fontSize: sz.lg, marginTop: sp.sm, fontWeight: '200' }}>
             {downloads ? formatNumber(downloads) : '--'}
           </Text>
         </__>
       </Row>
       <Divider />
-      <Row>
+      <Row style={{ alignItems: undefined }}>
         <StyledLabel title={'Camera Make'} value={exif?.make} />
         <StyledLabel title={'Camera Model'} value={exif?.model} />
       </Row>
@@ -87,10 +73,28 @@ export const PictureDetails = (p: { post: TPostIndex & Partial<TPost> }) => {
   )
 }
 
-export const PictureDetailsPage = (p: { postID: string; post: TPostIndex }) => {
-  const [post] = useLinkedState<TPost | undefined>(Post(p.postID))
-  useEffect(() => {
-    PictureWallState.fetchPost(p.postID)
-  }, [p.postID])
-  return <PictureDetails post={{ ...post, ...p.post }} />
+export const Label = (p: {
+  title: string
+  value?: string | number
+  style?: ViewStyle
+  titleStyle?: TextStyle
+  labelStyle?: TextStyle
+}) => {
+  return (
+    <View style={p.style}>
+      <Text style={{ fontSize: sz.sm, fontWeight: wt._300, color: thm.sec, ...p.titleStyle }}>
+        {p.title}
+      </Text>
+      <Text
+        style={{ fontSize: sz.md, marginTop: sp.xs, textTransform: 'uppercase', ...p.labelStyle }}>
+        {p.value ?? '--'}
+      </Text>
+    </View>
+  )
 }
+
+const StyledLabel = withStyle(Label)({
+  marginBottom: sp.lg,
+  flex: 1,
+  flexGrow: 1
+})

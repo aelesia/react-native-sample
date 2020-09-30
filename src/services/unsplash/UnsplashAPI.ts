@@ -25,6 +25,7 @@ export class UnsplashAPI {
 
   searchPhotos = tryToastError(
     async (req: Req<SearchPhotosReq>): Promise<TPostIndex[]> => {
+      console.log('hello')
       const result = await _searchPhotos({ ...req, client_id: this.client_id })
       return result.results.map(it => ({
         id: it.id,
