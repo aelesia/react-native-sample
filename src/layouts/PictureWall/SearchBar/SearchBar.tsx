@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { TextInput, View } from 'react-native'
+import { Platform, TextInput, View } from 'react-native'
 
 import { SvgSearch } from '../../../assets/svg/SvgSearch'
 import { Row } from '../../../components/general/General'
@@ -20,7 +20,7 @@ export const SearchBar = (p: { onSearch: (searchText: string) => any }) => {
           flexGrow: 1,
           backgroundColor: '#EEE',
           marginRight: sp.sm,
-          paddingVertical: sp.xs,
+          paddingVertical: Platform.OS === 'ios' ? sp.xs : 0,
           paddingHorizontal: sp.sm,
           borderRadius: 10
         }}>
