@@ -30,6 +30,6 @@ export type TPost = TPostIndex & {
   views: number
   downloads: number
   createdAt: Date
-  exif: TExif
-  location: string
+  exif?: TExif
+  location?: string
 }

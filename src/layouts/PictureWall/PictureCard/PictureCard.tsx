@@ -3,9 +3,10 @@ import { Image, Text, ViewStyle } from 'react-native'
 
 import { WIDTH } from '../../../app/consts/Consts'
 import { SvgHeart } from '../../../assets/svg/SvgHeart'
+import { SvgInfo } from '../../../assets/svg/SvgInfo'
 import { Card, Row } from '../../../components/general/General'
 import { TPostIndex } from '../../../models/Models'
-import { sp, sz } from '../../../style/Style'
+import { sp, sq, sz } from '../../../style/Style'
 import { UserThumbnail } from './UserThumbnail/UserThumbnail'
 
 export const PictureCard = (p: { post: TPostIndex; style?: ViewStyle }) => {

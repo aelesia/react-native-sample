@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Text, View } from 'react-native'
+import { Text, TextStyle, View, ViewStyle } from 'react-native'
 import { withStyle } from 'reactjs-commons'
 
 import { useLinkedState } from '../../../../lib/linkedstate/LinkedState'
@@ -8,10 +8,27 @@ import { SvgLocation } from '../../../assets/svg/SvgLocation'
 import { SvgView } from '../../../assets/svg/SvgView'
 import { __, Divider, Row } from '../../../components/general/General'
 import { TPost, TPostIndex } from '../../../models/Models'
-import { cl, sp, sz } from '../../../style/Style'
+import { cl, sp, sz, thm } from '../../../style/Style'
 import { formatNumber } from '../../../utils/Utils'
-import { Label } from '../PictureWall'
 import { PictureWallState, Post } from '../PictureWallState'
+
+export const Label = (p: {
+  title: string
+  value?: string | number
+  style?: ViewStyle
+  titleStyle?: TextStyle
+  labelStyle?: TextStyle
+}) => {
+  return (
+    <View style={p.style}>
+      <Text style={{ fontSize: sz.sm, color: thm.sec, ...p.titleStyle }}>{p.title}</Text>
+      <Text
+        style={{ fontSize: sz.md, marginTop: sp.xs, textTransform: 'uppercase', ...p.labelStyle }}>
+        {p.value ?? '--'}
+      </Text>
+    </View>
+  )
+}
 
 const StyledLabel = withStyle(Label)({
   marginBottom: sp.lg,

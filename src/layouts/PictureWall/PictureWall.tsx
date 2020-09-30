@@ -41,21 +41,3 @@ export const PictureWall = (p: { posts: TPostIndex[] }) => {
     </>
   )
 }
-
-export const Label = (p: {
-  title: string
-  value?: string | number
-  style?: ViewStyle
-  titleStyle?: TextStyle
-  labelStyle?: TextStyle
-}) => {
-  return (
-    <View style={p.style}>
-      <Text style={{ fontSize: sz.sm, color: thm.sec, ...p.titleStyle }}>{p.title}</Text>
-      <Text
-        style={{ fontSize: sz.md, marginTop: sp.xs, textTransform: 'uppercase', ...p.labelStyle }}>
-        {p.value ?? '--'}
-      </Text>
-    </View>
-  )
-}
